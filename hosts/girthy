@@ -1,0 +1,11 @@
+[all:vars]
+project=girthy
+environment_tier=production
+domain=ec2-52-25-72-167.us-west-2.compute.amazonaws.com
+system_role=application
+
+[common:children]
+application
+
+[application]
+52.25.72.167

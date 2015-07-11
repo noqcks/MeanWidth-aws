@@ -1,0 +1,21 @@
+---
+- hosts: application
+  sudo: True
+  roles:
+    - role: telusdigital.haproxy
+      haproxy_backend_server_direct: 127.0.0.1:3000
+      haproxy_autodeploy_passthrough_enabled: no
+      haproxy_load_balancer_enabled: no
+      haproxy_stats_enabled: no
+      tags:
+        - haproxy
+    - role: telusdigital.nodejs
+    - role: telusdigital.upstart
+      upstart_name: girthy
+      upstart_exec_path: /usr/bin/node
+      upstart_exec_flags:
+        - /data/www/docroot/app.js
+      upstart_start_on:
+        - "runlevel [2345]"
+      upstart_stop_on:
+        - "runlevel [!2345]"
