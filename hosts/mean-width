@@ -1,5 +1,5 @@
 [all:vars]
-project=girthy
+project=mean-width
 environment_tier=production
 domain=ec2-52-25-72-167.us-west-2.compute.amazonaws.com
 system_role=application
